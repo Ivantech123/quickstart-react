@@ -5,8 +5,8 @@ import Button from "./components/base/Button";
 import Vapi from "@vapi-ai/web";
 import { isPublicKeyMissingError } from "./utils";
 
-// Put your Vapi Public Key below.
-const vapi = new Vapi("0000XXXX-XXXX-XXXX-XXXX-XXXXXXXX0000");
+// Публичный ключ Vapi
+const vapi = new Vapi("52978c03-a813-4d6f-a54b-9b2e55b7b210");
 
 const App = () => {
   const [connecting, setConnecting] = useState(false);
@@ -61,7 +61,8 @@ const App = () => {
   // call start handler
   const startCallInline = () => {
     setConnecting(true);
-    vapi.start(assistantOptions);
+    // Используем ID ассистента вместо inline-конфигурации
+    vapi.start("4d5dc33a-165d-4f54-b620-535ce47bf507");
   };
   const endCall = () => {
     vapi.stop();
@@ -79,7 +80,7 @@ const App = () => {
     >
       {!connected ? (
         <Button
-          label="Call Vapi’s Pizza Front Desk"
+          label="Включить Lex AI"
           onClick={startCallInline}
           isLoading={connecting}
         />
@@ -92,14 +93,13 @@ const App = () => {
       )}
 
       {showPublicKeyInvalidMessage ? <PleaseSetYourPublicKeyMessage /> : null}
-      <ReturnToDocsLink />
     </div>
   );
 };
 
 const assistantOptions = {
-  name: "Vapi’s Pizza Front Desk",
-  firstMessage: "Vappy’s Pizzeria speaking, how can I help you?",
+  name: "Vapi's Pizza Front Desk",
+  firstMessage: "Vappy's Pizzeria speaking, how can I help you?",
   transcriber: {
     provider: "deepgram",
     model: "nova-2",
@@ -115,7 +115,7 @@ const assistantOptions = {
     messages: [
       {
         role: "system",
-        content: `You are a voice assistant for Vappy’s Pizzeria, a pizza shop located on the Internet.
+        content: `You are a voice assistant for Vappy's Pizzeria, a pizza shop located on the Internet.
 
 Your job is to take the order of customers calling in. The menu has only 3 types
 of items: pizza, sides, and drinks. There are no other types of items on the menu.
@@ -193,26 +193,5 @@ const PleaseSetYourPublicKeyMessage = () => {
   );
 };
 
-const ReturnToDocsLink = () => {
-  return (
-    <a
-      href="https://docs.vapi.ai"
-      target="_blank"
-      rel="noopener noreferrer"
-      style={{
-        position: "fixed",
-        top: "25px",
-        right: "25px",
-        padding: "5px 10px",
-        color: "#fff",
-        textDecoration: "none",
-        borderRadius: "5px",
-        boxShadow: "0 2px 5px rgba(0,0,0,0.2)",
-      }}
-    >
-      return to docs
-    </a>
-  );
-};
 
 export default App;
