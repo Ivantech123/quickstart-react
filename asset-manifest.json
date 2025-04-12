@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/quickstart-react/static/css/main.f77f4432.css",
+    "main.js": "/quickstart-react/static/js/main.66cf7152.js",
+    "index.html": "/quickstart-react/index.html",
+    "main.f77f4432.css.map": "/quickstart-react/static/css/main.f77f4432.css.map",
+    "main.66cf7152.js.map": "/quickstart-react/static/js/main.66cf7152.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f77f4432.css",
+    "static/js/main.66cf7152.js"
+  ]
+}
